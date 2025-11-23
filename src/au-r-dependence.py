@@ -9,7 +9,7 @@ from lib.plots import article_dpi, article_figsize, article_tight, get_cmap, use
 from lib.helpers import get_x_of_max_y
 
 if TYPE_CHECKING:
-    from lib.mie_scattering import MieResults
+    from lib.mie_scattering import MieScatteringResults
 
 material = "Au"
 n_med = 1.333
@@ -20,7 +20,7 @@ steps = 1000
 
 wl_range = np.linspace(min_wl, max_wl, steps)
 
-results: "list[MieResults]" = []
+results: "list[MieScatteringResults]" = []
 cmap = get_cmap("viridis", len(radii))
 use_latex()
 

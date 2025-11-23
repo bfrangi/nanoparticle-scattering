@@ -8,7 +8,7 @@ from lib.mie_scattering import mie_scattering
 from lib.plots import article_dpi, article_figsize, article_tight, get_cmap, use_latex
 
 if TYPE_CHECKING:
-    from lib.mie_scattering import MieResults
+    from lib.mie_scattering import MieScatteringResults
 
 materials = [
     "Au",
@@ -22,7 +22,7 @@ steps = 1000
 
 wl_range = np.linspace(min_wl, max_wl, steps)
 
-results: "list[MieResults]" = []
+results: "list[MieScatteringResults]" = []
 cmap = get_cmap("viridis", 3)
 use_latex()
 

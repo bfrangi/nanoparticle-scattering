@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class MieResults:
+class MieScatteringResults:
     wl: "NDArray[np.float64]"
     mat: str
     r: float
@@ -78,7 +78,7 @@ def c_ext(k: float, a: "NDArray[np.complex128]", b: "NDArray[np.complex128]") ->
 
 def mie_scattering(
     wl_range: "NDArray[np.float64]", mat: str, r: float, n_med: float
-) -> MieResults:
+) -> MieScatteringResults:
     """
     Calculates Mie coefficients and optical efficiencies for a spherical nanoparticle.
 
@@ -95,8 +95,8 @@ def mie_scattering(
 
     Returns
     -------
-    MieResults
-        Contains wavelength, Mie coefficients (a1, b1, a2, b2), and efficiencies (Qext, Qsca, Qabs).
+    MieScatteringResults
+        Contains wavelength, material, radius, medium refractive index, Mie coefficients, and efficiencies.
     """
 
     print(f"\nRunning Mie theory calculations for {mat} nanoparticles...")
@@ -162,8 +162,6 @@ def mie_scattering(
         bh = [bj[n] + 1j * by[n] for n in range(3)]
 
         bjz = [spherical_jn(n, z) for n in range(3)]
-        # byz = [spherical_yn(n, z) for n in range(3)]
-        # bhz = [bjz[n] + 1j * byz[n] for n in range(3)]
 
         # Derivatives
         d_bj = [x * bj[0] - w * bj[1], x * bj[1] - 2 * bj[2]]
@@ -185,52 +183,16 @@ def mie_scattering(
         )
 
         # Cross sections
-        # Write here the correct expressions of the extinction, absroption and scattering cross sections
         Cext = c_ext(k, [a1[j], a2[j]], [b1[j], b2[j]])
         Csca = c_sca(k, [a1[j], a2[j]], [b1[j], b2[j]])
         Cabs = Cext - Csca
 
         # Efficiencies
-        # Write here the correct expressions of the extinction, absorption and scattering efficiencies
         Qext[j] = Cext / (np.pi * r**2)
         Qsca[j] = Csca / (np.pi * r**2)
         Qabs[j] = Cabs / (np.pi * r**2)
 
-    # # === Plot efficiencies ===
-    # plt.figure(figsize=(8, 5))
-    # plt.plot(lambda_range, Qext, "b", label="Extinction")
-    # plt.plot(lambda_range, Qsca, "r", label="Scattering")
-    # plt.plot(lambda_range, Qabs, "g", label="Absorption")
-    # plt.xlabel("Incident wavelength (nm)")
-    # plt.ylabel("Efficiency")
-    # plt.legend()
-    # plt.grid(True)
-    # plt.title(f"Optical Efficiencies - {mater}")
-    # plt.show()
-
-    # # === Plot Mie coefficients ===
-    # plt.figure(figsize=(8, 5))
-    # plt.plot(lambda_range, np.real(a1), label="a1")
-    # plt.plot(lambda_range, np.real(b1), label="b1")
-    # plt.plot(lambda_range, np.real(a2), label="a2")
-    # plt.plot(lambda_range, np.real(b2), label="b2")
-    # plt.xlabel("Incident wavelength (nm)")
-    # plt.ylabel("Mie Coefficients (Real part)")
-    # plt.legend()
-    # plt.grid(True)
-    # plt.title(f"Mie Coefficients - {mater}")
-    # plt.show()
-
-    # # === Save results ===
-    # np.savetxt(
-    #     "MieCoeff.dat",
-    #     np.column_stack([lambda_range, a1.real, b1.real, a2.real, b2.real]),
-    # )
-    # np.savetxt("Efficiencies.dat", np.column_stack([lambda_range, Qext, Qsca, Qabs]))
-
-    # print("\nFiles saved: 'MieCoeff.dat' and 'Efficiencies.dat'")
-
-    return MieResults(
+    return MieScatteringResults(
         wl=wl_range,
         mat=mat,
         r=r,
