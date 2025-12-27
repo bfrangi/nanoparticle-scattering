@@ -1,6 +1,6 @@
-# Nanoparticle Scattering Simulator
+# Mie Scattering Simulator
 
-[![DOI](https://zenodo.org/badge/1102545401.svg)](https://doi.org/10.5281/zenodo.18069231)
+[![DOI](https://zenodo.org/badge/18069231.svg)](https://doi.org/10.5281/zenodo.18069231)
 
 Code for simulating Mie scattering by nanoparticles.
 
@@ -49,3 +49,17 @@ python src/si-intensity-interference.py
 ```
 
 These scripts will generate plots and save them in the `figures/` folder.
+
+# Cite this repository
+
+```bib
+@software{bernat_frangi_2025_18069231,
+  author       = {Bernat Frangi},
+  title        = {Mie Scattering Simulator},
+  month        = 12,
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18069231},
+  url          = {https://doi.org/10.5281/zenodo.18069231},
+}
+```
