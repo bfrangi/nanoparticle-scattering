@@ -1,5 +1,7 @@
 # Nanoparticle Scattering Simulator
 
+[![DOI](https://zenodo.org/badge/1102545401.svg)](https://doi.org/10.5281/zenodo.18069231)
+
 Code for simulating Mie scattering by nanoparticles.
 
 ## Quick Start
