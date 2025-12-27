@@ -29,7 +29,7 @@ use_latex()
 
 for wl in wls:
     results_this = []
-    wls_this = wl * np.array([0.99, 1.0, 1.01])
+    wls_this = wl * np.array([0.95, 1.0, 1.05])
 
     for wl_this in wls_this:
         result = mie_intensity(wl=wl_this, mat=mat, r=r, n_med=n_med)
