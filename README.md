@@ -53,13 +53,14 @@ These scripts will generate plots and save them in the `figures/` folder.
 # Cite this repository
 
 ```bib
-@software{bernat_frangi_2025_18069231,
+@misc{bernat_frangi_2025_18069231,
   author       = {Bernat Frangi},
   title        = {Mie Scattering Simulator},
-  month        = 12,
-  year         = 2025,
+  month        = {Dec},
+  year         = {2025},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.18069231},
+  howpublished = {Zenodo},
   url          = {https://doi.org/10.5281/zenodo.18069231},
 }
 ```
