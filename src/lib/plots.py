@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 article_tight = {"pad": 0.1, "rect": (0.01, 0.01, 0.99, 0.99)}
 article_scale = 0.3
 article_figsize = (8 * article_scale, 6 * article_scale)
+article_figsize_stacked = (8 * article_scale, 14 * article_scale)
 article_figsize_wide = (16 * article_scale, 6 * article_scale)
 article_figsize_polar = (8 * article_scale, 8 * article_scale)
 article_dpi = 300
