@@ -46,4 +46,7 @@ def get_cmap(name: str, n: int):
 
 def use_latex():
     """Use LaTeX for rendering text in plots."""
-    plt.rcParams.update({"text.usetex": True, "font.family": "Computer Modern"})
+    try:
+        plt.rcParams.update({"text.usetex": True, "font.family": "Computer Modern"})
+    except Exception:
+        print("LaTeX not found. Using default matplotlib font.")
