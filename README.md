@@ -1,6 +1,6 @@
 # Mie Scattering Simulator
 
-[![DOI](https://zenodo.org/badge/18069231.svg)](https://doi.org/10.5281/zenodo.18069231)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18069231.svg)](https://doi.org/10.5281/zenodo.18069231)
 
 Code for simulating Mie scattering by nanoparticles.
 
