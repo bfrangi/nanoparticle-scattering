@@ -39,3 +39,11 @@ To try this project out, follow these steps:
    It is recommended only for generating publication-quality figures.
 
 
+## Usage
+
+The main simulation scripts are located in the `src/` folder. You can run them using Python. For example:
+```
+python src/si-intensity-interference.py
+```
+
+These scripts will generate plots and save them in the `figures/` folder.
